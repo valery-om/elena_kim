@@ -1252,3 +1252,30 @@ ul li {
         /* Optional: hide AI on very small screens if needed, or adjust pos */
     }
 }
+/* Mobile Fixes - Overrides for Typography and CTA Overlap */
+@media (max-width: 768px) {
+    .main-container {
+        padding-bottom: 120px;
+    }
+    
+    .mega-title {
+        font-size: 1.75rem;
+    }
+    
+    .stat-highlight {
+        font-size: 2rem;
+    }
+    
+    .large-number, .amount {
+        font-size: 2.5rem;
+    }
+    
+    .stat-val {
+        font-size: 2rem;
+    }
+    
+    .sticky-cta {
+        z-index: 9999;
+        bottom: 20px; 
+    }
+}
