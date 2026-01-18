@@ -1153,3 +1153,102 @@ ul li {
     background: var(--accent-blue);
     color: white;
 }
+
+/* Mobile Adaptation */
+@media (max-width: 768px) {
+    :root {
+        --spacing-section: 60px;
+        --spacing-element: 16px;
+    }
+
+    h1.main-title {
+        font-size: 2.5rem;
+    }
+
+    .mega-title {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .glass-panel {
+        padding: 1.5rem;
+    }
+
+    .grid-2-col,
+    .proof-main-grid,
+    .comparison-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Timeline Mobile */
+    .timeline-header {
+        padding: 1rem;
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .stage-time-badge {
+        margin-left: 0;
+        font-size: 0.8rem;
+        order: -1;
+        /* Move date up */
+        color: var(--accent-blue);
+        font-weight: 600;
+    }
+
+    /* Chart Mobile */
+    .organic-chart {
+        padding: 15px;
+    }
+
+    .proof-col-text {
+        padding-right: 0;
+    }
+
+    .context-grid {
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    /* Sticky CTA Mobile */
+    .sticky-cta {
+        bottom: 20px;
+        width: 90%;
+        left: 5%;
+        right: 5%;
+        transform: translateY(100px);
+    }
+
+    .sticky-cta.visible {
+        transform: translateY(0);
+    }
+
+    .sticky-content {
+        padding: 10px 15px;
+    }
+
+    .sticky-content span {
+        display: none;
+        /* Hide text on small screens, show only button */
+    }
+
+    .sticky-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .ai-widget {
+        display: none;
+        /* Optional: hide AI on very small screens if needed, or adjust pos */
+    }
+}
