@@ -509,12 +509,182 @@ ul li {
 /* --- Round 5 Features --- */
 
 /* 1. Animated Chart */
+/* --- Block 7: Proof Redesign --- */
+.proof-header {
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.subtitle-large {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-top: -1rem;
+}
+
+.context-grid {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    display: inline-flex;
+}
+
+.metric-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+}
+
+.metric-item .icon {
+    font-size: 1.5rem;
+    background: white;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: var(--shadow-soft);
+}
+
+.metric-item p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.text-sm {
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.proof-main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    /* Give chart slightly more space */
+    gap: 3rem;
+    align-items: start;
+}
+
+@media (max-width: 850px) {
+    .proof-main-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.proof-col-text {
+    padding-right: 1rem;
+}
+
+.year-marker {
+    display: inline-block;
+    padding: 4px 12px;
+    background: #e5e5ea;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.year-marker.text-accent {
+    background: rgba(0, 113, 227, 0.1);
+    color: var(--accent-blue);
+}
+
+.stat-row {
+    margin: 1.5rem 0;
+}
+
+.stat-val {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.divider {
+    border: none;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+    margin: 1.5rem 0;
+}
+
+.clean-list {
+    list-style: none;
+    padding: 0;
+}
+
+.clean-list li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.clean-list li::before {
+    content: "•";
+    color: var(--text-secondary);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.challenge-box {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 59, 48, 0.05);
+    /* very light red */
+    border-left: 3px solid #ff3b30;
+    border-radius: 0 12px 12px 0;
+}
+
+.challenge-box strong {
+    color: #ff3b30;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.challenge-box p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.growth-caption {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--accent-blue);
+    font-weight: 600;
+}
+
 /* 1. Animated Chart (SVG Organic) */
 .organic-chart {
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    /* Enhanced shadow */
+    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .growth-curve {
