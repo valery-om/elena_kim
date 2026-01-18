@@ -275,6 +275,22 @@ p {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    position: relative;
+    padding-left: 20px;
+    /* Space for the line */
+}
+
+/* Vertical Connector Line */
+.timeline-interactive::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 8px;
+    /* Center with padding-left */
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent-blue) 0%, rgba(0, 113, 227, 0.1) 100%);
+    border-radius: 2px;
 }
 
 .timeline-accordion-item {
