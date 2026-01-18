@@ -313,3 +313,25 @@ function animateParticles() {
 initParticles();
 animateParticles();
 
+// 7. Timeline Accordion Logic
+const timelineItems = document.querySelectorAll('.timeline-accordion-item');
+
+if (timelineItems.length > 0) {
+    timelineItems.forEach(item => {
+        const header = item.querySelector('.timeline-header');
+        if (header) {
+            header.addEventListener('click', () => {
+                // Option 1: Exclusive (close others)
+                timelineItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+
+                // Toggle current
+                item.classList.toggle('active');
+            });
+        }
+    });
+}
+
