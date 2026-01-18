@@ -607,12 +607,52 @@ ul li {
 }
 
 .highlight-note {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-primary);
     margin-bottom: 0.5rem;
     display: flex;
     align-items: flex-start;
     gap: 12px;
+}
+
+/* Timeline Details */
+.week-block h4 {
+    font-size: 1.1rem;
+    color: var(--accent-blue);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-body .styled-list li {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
+
+.mb-small {
+    margin-bottom: 1rem;
+}
+
+.mb-medium {
+    margin-bottom: 2rem;
+}
+
+.text-accent {
+    color: var(--accent-blue);
+}
+
+.bg-white {
+    background: white;
+}
+
+.rounded {
+    border-radius: 12px;
+}
+
+.p-2 {
+    padding: 1rem;
+}
+
+.deliverables-box {
+    text-align: left;
 }
 
 .highlight-note:last-child {
@@ -1252,30 +1292,32 @@ ul li {
         /* Optional: hide AI on very small screens if needed, or adjust pos */
     }
 }
+
 /* Mobile Fixes - Overrides for Typography and CTA Overlap */
 @media (max-width: 768px) {
     .main-container {
         padding-bottom: 120px;
     }
-    
+
     .mega-title {
         font-size: 1.75rem;
     }
-    
+
     .stat-highlight {
         font-size: 2rem;
     }
-    
-    .large-number, .amount {
+
+    .large-number,
+    .amount {
         font-size: 2.5rem;
     }
-    
+
     .stat-val {
         font-size: 2rem;
     }
-    
+
     .sticky-cta {
         z-index: 9999;
-        bottom: 20px; 
+        bottom: 20px;
     }
 }
