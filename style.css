@@ -5,8 +5,8 @@
     --accent-blue: #0071e3;
     --glass-bg: rgba(255, 255, 255, 0.65);
     --glass-border: rgba(255, 255, 255, 0.4);
-    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
-    --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.03);
+    --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.08);
     --gradient-text: linear-gradient(135deg, #1d1d1f 0%, #434344 100%);
     --gradient-accent: linear-gradient(135deg, #0071e3 0%, #2997ff 100%);
 
@@ -28,7 +28,7 @@
 }
 
 body {
-    background-color: var(--bg-color);
+    background-color: transparent;
     color: var(--text-primary);
     font-family: var(--font-body);
     line-height: 1.5;
@@ -38,66 +38,15 @@ body {
 }
 
 /* Background Animation */
-.background-animation {
+/* Background Animation */
+#bg-canvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    overflow: hidden;
     background: #fbfbfd;
-}
-
-.orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.6;
-    animation: floatOrb 20s infinite ease-in-out;
-}
-
-.orb-1 {
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(160, 215, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
-    top: -100px;
-    left: -100px;
-    animation-delay: 0s;
-}
-
-.orb-2 {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(230, 210, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
-    bottom: 10%;
-    right: -50px;
-    animation-delay: -5s;
-}
-
-.orb-3 {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(200, 240, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
-    top: 40%;
-    left: 30%;
-    animation-delay: -10s;
-}
-
-@keyframes floatOrb {
-
-    0%,
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-
-    33% {
-        transform: translate(30px, -50px) scale(1.1);
-    }
-
-    66% {
-        transform: translate(-20px, 20px) scale(0.9);
-    }
 }
 
 /* Background Gradients Override */
@@ -560,76 +509,115 @@ ul li {
 /* --- Round 5 Features --- */
 
 /* 1. Animated Chart */
-.chart-container {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 16px;
+/* 1. Animated Chart (SVG Organic) */
+.organic-chart {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-.chart-flex {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    height: 200px;
-    padding-bottom: 20px;
-}
-
-.chart-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 14%;
-    position: relative;
-}
-
-.bar {
+.growth-curve {
     width: 100%;
-    background: #d1d1d6;
-    border-radius: 6px 6px 0 0;
-    transition: height 1.5s cubic-bezier(0.22, 1, 0.36, 1);
-    position: relative;
+    height: auto;
+    overflow: visible;
 }
 
-.bar-highlight {
-    background: var(--gradient-accent);
-    box-shadow: 0 0 15px rgba(0, 113, 227, 0.4);
+.curve-line {
+    fill: none;
+    stroke: var(--accent-blue);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 2.5s ease-out;
 }
 
-.bar-future {
-    background: repeating-linear-gradient(45deg,
-            #d1d1d6,
-            #d1d1d6 5px,
-            #e5e5ea 5px,
-            #e5e5ea 10px);
-}
-
-.year {
-    font-size: 0.75rem;
-    margin-top: 8px;
-    color: var(--text-secondary);
-}
-
-.val {
-    position: absolute;
-    top: -25px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-primary);
+.curve-area {
+    fill: url(#curveGradient);
     opacity: 0;
-    transition: opacity 0.5s 1s;
-    /* Delay until bar grows */
+    transition: opacity 1.5s ease-in 1s;
 }
 
-/* When active */
-.chart-container.active .bar {
-    /* Height is set via inline style in JS or pre-set in HTML but overridden to 0 initially.
-       Actually, simpler: Set transition, let JS change height from 0 to var. 
-       We will use JS to modify the height style. */
+.chart-point circle {
+    fill: white;
+    stroke: var(--accent-blue);
+    stroke-width: 2;
+    transition: all 0.3s ease;
 }
 
-.chart-container.active .val {
+.chart-point text {
+    font-family: var(--font-body);
+    font-size: 12px;
+    fill: var(--text-secondary);
+    text-anchor: middle;
+}
+
+.chart-point .val-text {
+    font-size: 14px;
+    font-weight: 600;
+    fill: var(--text-primary);
+}
+
+.chart-point.highlight-point circle {
+    fill: var(--accent-blue);
+    stroke: white;
+    stroke-width: 3;
+    r: 6;
+}
+
+.chart-point.highlight-point .val-text {
+    fill: var(--accent-blue);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* Animation trigger class */
+.chart-container.active .curve-line {
+    stroke-dashoffset: 0;
+}
+
+.chart-container.active .curve-area {
     opacity: 1;
+}
+
+.chart-point {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease-out;
+}
+
+.chart-container.active .chart-point {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger points */
+.chart-container.active .chart-point:nth-child(3) {
+    transition-delay: 0.5s;
+}
+
+/* point 1 */
+.chart-container.active .chart-point:nth-child(4) {
+    transition-delay: 0.7s;
+}
+
+/* point 2 */
+.chart-container.active .chart-point:nth-child(5) {
+    transition-delay: 0.9s;
+}
+
+/* ... */
+.chart-container.active .chart-point:nth-child(6) {
+    transition-delay: 1.1s;
+}
+
+.chart-container.active .chart-point:nth-child(7) {
+    transition-delay: 1.3s;
+}
+
+.chart-container.active .chart-point:nth-child(8) {
+    transition-delay: 1.5s;
 }
 
 
