@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,17 +11,20 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         :root {
-            --bg-color: #0a0a0a;
+            --bg-color: #050505;
             --text-primary: #ffffff;
-            --text-secondary: #888888;
+            --text-secondary: #999999;
             --accent-blue: #0071e3;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
         }
 
         body {
             margin: 0;
             padding: 20px;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg-color);
+            background-image: radial-gradient(circle at 50% 10%, rgba(0, 113, 227, 0.15), transparent 60%);
             color: var(--text-primary);
             height: 100vh;
             display: flex;
@@ -32,64 +36,104 @@
         }
 
         .container {
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            backdrop-filter: blur(10px);
+            max-width: 640px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 60px 40px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            background: var(--accent-blue);
+            filter: blur(100px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .brand-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            opacity: 0.9;
         }
 
         h1 {
-            font-size: 1.2rem;
-            line-height: 1.6;
+            font-size: 1.8rem;
+            line-height: 1.4;
             font-weight: 400;
-            margin-bottom: 2rem;
-            color: var(--text-secondary);
+            margin: 0 auto 2.5rem;
+            color: var(--text-primary);
         }
 
         strong {
-            color: var(--text-primary);
             font-weight: 600;
+            color: #fff;
         }
 
         .contact-text {
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
         }
 
         .tg-button {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background-color: var(--accent-blue);
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #0071e3 0%, #005bb5 100%);
             color: white;
-            padding: 12px 24px;
+            padding: 16px 32px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.2s, opacity 0.2s;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 113, 227, 0.3);
         }
 
         .tg-button:hover {
             transform: translateY(-2px);
-            opacity: 0.9;
+            box-shadow: 0 8px 30px rgba(0, 113, 227, 0.5);
         }
     </style>
 </head>
+
 <body>
     <div class="container">
+        <span class="brand-label">Offer from SINTEZ.AGENCY</span>
         <h1>
-            Тут было предложение для стоматологии <strong>Elena Kim dental clinic</strong> по выходу на <strong>$1 000 000</strong>, но оно уже не актуально.
+            Предложение для <strong>Elena Kim Dental Clinic</strong><br>
+            по выходу на <strong>$1,000,000</strong><br>
+            <span style="opacity: 0.5; display: block; margin-top: 10px; font-size: 0.9em;">более не актуально</span>
         </h1>
-        <p class="contact-text">Если вы считаете, что произошла ошибка, свяжитесь с нами:</p>
+        <p class="contact-text">Если вы считаете, что произошла ошибка,<br>просто свяжитесь с нами</p>
         <a href="https://t.me/sintez_agency" class="tg-button" target="_blank">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21.6 2.6c.4-.4 1-.4 1.3 0 .2.2.3.5.2.8l-3.6 17c-.1.6-.8.9-1.4.6l-5.6-2.9-2.7 2.6c-.3.3-.8.4-1.2.2-.2-.1-.3-.3-.4-.5l-1.4-5.6L18 6.4c.1-.1.1-.3 0-.4-.1-.1-.3-.1-.4 0L5.4 12.3 2.1 11c-.6-.2-.7-1-.1-1.3L20.8 2.6z" fill="white"/>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M21.6 2.6c.4-.4 1-.4 1.3 0 .2.2.3.5.2.8l-3.6 17c-.1.6-.8.9-1.4.6l-5.6-2.9-2.7 2.6c-.3.3-.8.4-1.2.2-.2-.1-.3-.3-.4-.5l-1.4-5.6L18 6.4c.1-.1.1-.3 0-.4-.1-.1-.3-.1-.4 0L5.4 12.3 2.1 11c-.6-.2-.7-1-.1-1.3L20.8 2.6z"
+                    fill="white" />
             </svg>
-            Связаться в Telegram
+            Написать в Telegram
         </a>
     </div>
 </body>
+
 </html>
